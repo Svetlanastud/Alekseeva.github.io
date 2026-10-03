@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ФинСтарт: финансовая грамотность для 7 класса</title>
+  <style>
+    :root {
+      --primary: #1976d2;       /* спокойный синий */
+      --accent: #f57c00;        /* оранжевый для акцентов */
+      --bg: #f5f7fa;            /* светлый фон */
+      --card: #ffffff;
+      --text: #212121;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      padding: 2rem 1rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 { margin: 0 0 0.5rem; color: var(--primary); }
+    .tagline { color: #5c6bc0; max-width: 600px; margin: 0 auto; }
+    .cta {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .card h3 { margin-top: 0; color: var(--primary); }
+    section.calculator, section.quiz, section.safety {
+      padding: 2rem 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    form { display: grid; gap: 1rem; max-width: 500px; }
+    label { font-weight: 600; }
+    input[type="number"], input[type="text"] {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button[type="submit"] {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    #savingsResult {
+      margin-top: 1rem; padding: 1rem; background: #e3f2fd;
+      border-radius: 8px; display: none;
+    }
+    .quiz-card {
+      background: var(--card); padding: 1.2rem; border-radius: 10px;
+      border: 1px solid #eee; margin-bottom: 1rem;
+    }
+    .spoiler {
+      background: #fff3e0; padding: 0.8rem; border-radius: 8px;
+      display: none; font-size: 0.95rem;
+    }
+    footer {
+      text-align: center; padding: 2rem; color: #777; font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ФинСтарт</h1>
+    <p class="tagline">Финансовая грамотность для 7 класса: считаем, планируем, защищаемся. Без скучных лекций — только практика.</p>
+    <a href="#calculator" class="cta">Посчитать накопления</a>
+  </header>
+
+  <section class="features">
+    <div class="card">
+      <h3>Считай</h3>
+      <p>Калькулятор покажет, сколько недель нужно копить на мечту — с учётом твоих карманных денег и расходов.</p>
+    </div>
+    <div class="card">
+      <h3>Планируй</h3>
+      <p>Мини-квест из 5 жизненных ситуаций: выбери верное решение и получи совет в конце.</p>
+    </div>
+    <div class="card">
+      <h3>Защищайся</h3>
+      <p>Карточки-кейсы про мошенников: научись распознавать опасные предложения и что делать.</p>
+    </div>
+  </section>
+
+  <section id="calculator" class="calculator">
+    <h2>Калькулятор: накопить на мечту</h2>
+    <form id="savingsForm">
+      <label for="goal">Мечта (например, наушники, велосипед):</label>
+      <input type="text" id="goal" placeholder="Что хочешь купить?" />
+
+      <label for="price">Цена (руб.):</label>
+      <input type="number" id="price" placeholder="Сколько стоит?" required />
+
+      <label for="pocket">Карманные деньги в неделю (руб.):</label>
+      <input type="number" id="pocket" placeholder="Сколько дают?" required />
+
+      <label for="expenses">Обязательные траты в неделю (руб.):</label>
+      <input type="number" id="expenses" placeholder="Например, проезд, перекус" />
+
+      <button type="submit">Рассчитать</button>
+    </form>
+    <div id="savingsResult"></div>
+  </section>
+
+  <section class="quiz">
+    <h2>Мини-квест: личный бюджет</h2>
+    <div class="quiz-card">
+      <strong>Ситуация 1.</strong> Тебе дали 1000 ₽ на неделю. Ты хочешь купить игру за 800 ₽ и каждый день брать перекус по 150 ₽. Что лучше?<br>
+      <label><input type="radio" name="q1" value="a"> Купить игру и не брать перекус</label><br>
+      <label><input type="radio" name="q1" value="b"> Брать перекус и не покупать игру</label><br>
+      <label><input type="radio" name="q1" value="c"> Купить игру, а на перекус взять из дома</label>
+    </div>
+    <div class="quiz-card">
+      <strong>Ситуация 2.</strong> В чате класса пишут: «Розыгрыш 5000 ₽, перешли 100 ₽ — и ты в списке победителей». Что делаешь?<br>
+      <label><input type="radio" name="q2" value="a"> Переведу 100 ₽</label><br>
+      <label><input type="radio" name="q2" value="b"> Сообщу классному руководителю</label><br>
+      <label><input type="radio" name="q2" value="c"> Скажу, что не верю, и удалю сообщение</label>
+    </div>
+    <button onclick="checkQuiz()" style="background:var(--accent); color:white; padding:0.8rem 1.5rem; border:none; border-radius:8px; cursor:pointer;">Проверить ответы</button>
+    <div id="quizResult" style="margin-top:1rem; display:none;"></div>
+  </section>
+
+  <section class="safety">
+    <h2>Осторожно, мошенники!</h2>
+    <div class="quiz-card">
+      <strong>Кейс 1: «Вы выиграли приз!»</strong><br>
+      Тебе пришло сообщение: «Поздравляем! Вы выиграли 10 000 ₽. Чтобы получить, перешлите код из SMS».<br>
+      <button onclick="toggleSpoiler(this)" style="background:#fff; border:1px solid #ccc; padding:0.4rem 0.8rem; border-radius:4px; cursor:pointer;">Что делать?</button>
+      <div class="spoiler">Это обман. Никогда не пересылай коды из SMS. Не нажимай на ссылки. Сообщи взрослому или классному руководителю.</div>
+    </div>
+    <div class="quiz-card">
+      <strong>Кейс 2: «Ссылка на подарок»</strong><br>
+      Друг прислал ссылку: «Нажми — получишь бесплатные стикеры».<br>
+      <button onclick="toggleSpoiler(this)" style="background:#fff; border:1px solid #ccc; padding:0.4rem 0.8rem; border-radius:4px; cursor:pointer;">Что делать?</button>
+      <div class="spoiler">Не нажимай. Это может быть вирус или кража данных. Спроси у друга, точно ли он отправлял. Лучше не переходить по подозрительным ссылкам.</div>
+    </div>
+  </section>
+
+  <footer>
+    Проект учебной лаборатории «Цифровая педагогика». Материалы подготовлены с опорой на рекомендации Банка России по финансовой грамотности. Возрастная маркировка: 12+.
+  </footer>
+
+  <script>
+    document.getElementById('savingsForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const price = parseFloat(document.getElementById('price').value);
+      const pocket = parseFloat(document.getElementById('pocket').value);
+      const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+      const goal = document.getElementById('goal').value || 'твоя мечта';
+
+      const weeklySave = pocket - expenses;
+      let weeks = weeklySave > 0 ? Math.ceil(price / weeklySave) : 0;
+
+      const resultEl = document.getElementById('savingsResult');
+      resultEl.style.display = 'block';
+      if (weeklySave <= 0) {
+        resultEl.innerHTML = '<strong>Внимание!</strong> При таких тратах копить не получится. Попробуй уменьшить расходы или попросить больше карманных денег.';
+      } else {
+        resultEl.innerHTML = `
+          <strong>Чтобы накопить на «${goal}» (${price.toLocaleString()} ₽),</strong><br>
+          тебе нужно копить примерно <strong>${weeks} недель</strong>, откладывая ${weeklySave.toLocaleString()} ₽/неделю.
+        `;
+      }
+    });
+
+    function checkQuiz() {
+      const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+      const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+      const res = document.getElementById('quizResult');
+      res.style.display = 'block';
+
+      let score = 0;
+      if (q1 === 'c') score++;
+      if (q2 === 'b' || q2 === 'c') score++;
+
+      if (score === 2) {
+        res.textContent = 'Отлично! Ты умеешь планировать бюджет и не ведёшься на мошенников.';
+        res.style.color = '#1976d2';
+      } else if (score === 1) {
+        res.textContent = 'Хорошо, но есть над чем поработать. Перечитай карточки с советами.';
+        res.style.color = '#f57c00';
+      } else {
+        res.textContent = 'Будь осторожнее. Прочитай ещё раз кейсы про мошенников и подумай, как лучше планировать траты.';
+        res.style.color = '#d32f2f';
+      }
+    }
+
+    function toggleSpoiler(btn) {
+      const spoiler = btn.nextElementSibling;
+      spoiler.style.display = spoiler.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
